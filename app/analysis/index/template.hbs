@@ -19,28 +19,28 @@
       appliedCount = appliedFilters.length
       on-reset     = (action (queue t.clear (action 'reset')))
     as |fs|}}
-      {{#fs.group label='Task' expanded=true}}
-        {{#fs.label}}
+      <fs.group @label="Task" @expanded={{true}}>
+        <fs.label>
           Customer
           {{#fs.filter data-test-filter-customer}}
             {{t.customer}}
           {{/fs.filter}}
-        {{/fs.label}}
-        {{#fs.label}}
+        </fs.label>
+        <fs.label>
           Project
           {{#fs.filter data-test-filter-project}}
             {{t.project}}
           {{/fs.filter}}
-        {{/fs.label}}
-        {{#fs.label}}
+        </fs.label>
+        <fs.label>
           Task
           {{#fs.filter data-test-filter-task}}
             {{t.task}}
           {{/fs.filter}}
-        {{/fs.label}}
-      {{/fs.group}}
-      {{#fs.group label='Responsibility'}}
-        {{#fs.label}}
+        </fs.label>
+      </fs.group>
+      <fs.group @label="Responsibility">
+        <fs.label>
           User
           {{#fs.filter data-test-filter-user}}
             {{#user-selection
@@ -50,8 +50,8 @@
               {{u.user}}
             {{/user-selection}}
           {{/fs.filter}}
-        {{/fs.label}}
-        {{#fs.label}}
+        </fs.label>
+        <fs.label>
           Reviewer
           {{#fs.filter data-test-filter-reviewer}}
             {{#user-selection
@@ -59,13 +59,13 @@
               on-change     = (action 'setModelFilter' 'reviewer')
               queryOptions  = (hash is_reviewer=1)
             as |u|}}
-              {{u.user placeholder='Select reviewer...'}}
+              <u.user @placeholder="Select reviewer..." />
             {{/user-selection}}
           {{/fs.filter}}
-        {{/fs.label}}
-      {{/fs.group}}
-      {{#fs.group label='Finances'}}
-        {{#fs.label}}
+        </fs.label>
+      </fs.group>
+      <fs.group @label="Finances">
+        <fs.label>
           Billing type
           {{fs.filter 'select'
             data-test-filter-billing-type
@@ -76,8 +76,8 @@
             options   = billingTypes
             on-change = (action (mut billingType))
           }}
-        {{/fs.label}}
-        {{#fs.label}}
+        </fs.label>
+        <fs.label>
           Cost center
           {{fs.filter 'select'
             data-test-filter-cost-center
@@ -88,8 +88,8 @@
             options   = costCenters
             on-change = (action (mut costCenter))
           }}
-        {{/fs.label}}
-      {{/fs.group}}
+        </fs.label>
+      </fs.group>
       {{#fs.group label='Time range'}}
         {{#fs.label}}
           From
@@ -111,9 +111,9 @@
             onUpdateFromDate=(action (mut fromDate))
             onUpdateToDate=(action (mut toDate))
         }}
-      {{/fs.group}}
-      {{#fs.group label='State'}}
-        {{#fs.label}}
+        {{/fs.group}}
+      <fs.group @label="State">
+        <fs.label>
           Review
           {{fs.filter 'button'
             data-test-filter-review
@@ -127,8 +127,8 @@
             )
             on-change = (action (mut review))
           }}
-        {{/fs.label}}
-        {{#fs.label}}
+        </fs.label>
+        <fs.label>
           Billability
           {{fs.filter 'button'
             data-test-filter-not-billable
@@ -142,8 +142,8 @@
             )
             on-change = (action (mut notBillable))
           }}
-        {{/fs.label}}
-        {{#fs.label}}
+        </fs.label>
+        <fs.label>
           Verified
           {{fs.filter 'button'
             data-test-filter-verified
@@ -157,8 +157,8 @@
             )
             on-change = (action (mut verified))
           }}
-        {{/fs.label}}
-        {{#fs.label}}
+        </fs.label>
+        <fs.label>
           Editable
           {{fs.filter 'button'
             data-test-filter-editable
@@ -171,8 +171,8 @@
             )
             on-change = (action (mut editable))
           }}
-        {{/fs.label}}
-      {{/fs.group}}
+        </fs.label>
+      </fs.group>
     {{/filter-sidebar}}
   {{/task-selection}}
 
@@ -233,7 +233,7 @@
           </tr>
         </thead>
       </table>
-      {{#ember-scrollable class='analysis-scrollable-container'}}
+      <EmberScrollable @class="analysis-scrollable-container">
         <table class="table table--striped table--analysis">
           <colgroup>
             <col>
@@ -277,7 +277,7 @@
             {{/if}}
           </tbody>
         </table>
-      {{/ember-scrollable}}
+      </EmberScrollable>
       <table class="table table--striped table--analysis">
         <colgroup>
           <col>

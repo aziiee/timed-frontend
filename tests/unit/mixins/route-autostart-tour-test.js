@@ -4,6 +4,7 @@ import RouteAutostartTourMixin from "timed/mixins/route-autostart-tour";
 
 module("Unit | Mixin | route autostart tour", function() {
   test("works", function(assert) {
+    //eslint-disable-next-line ember/no-new-mixins
     const RouteAutostartTourObject = EmberObject.extend(
       RouteAutostartTourMixin
     );
@@ -12,6 +13,7 @@ module("Unit | Mixin | route autostart tour", function() {
   });
 
   test("can get parent route name", function(assert) {
+    //eslint-disable-next-line ember/no-new-mixins
     const RouteAutostartTourObject = EmberObject.extend(
       RouteAutostartTourMixin
     );
@@ -27,6 +29,7 @@ module("Unit | Mixin | route autostart tour", function() {
   });
 
   test("can check if a tour is wanted", function(assert) {
+    //eslint-disable-next-line ember/no-new-mixins
     const RouteAutostartTourObject = EmberObject.extend(
       RouteAutostartTourMixin
     );

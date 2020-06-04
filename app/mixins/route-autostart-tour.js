@@ -14,6 +14,7 @@ import RouteTourMixin from "ember-site-tour/mixins/route-tour";
  * @uses EmberSiteTour.RouteTourMixin
  * @public
  */
+//eslint-disable-next-line ember/no-new-mixins
 export default Mixin.create(RouteTourMixin, {
   autostartTour: service("autostart-tour"),
   notify: service("notify"),

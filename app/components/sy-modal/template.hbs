@@ -1,4 +1,4 @@
-{{#ember-wormhole to='sy-modals'}}
+<EmberWormhole @to="sy-modals">
   {{#sy-modal/overlay visible=visible on-close=(action 'close')}}
     <div class="modal-dialog {{if size (concat 'modal-dialog--' size)}}">
       {{yield (hash
@@ -9,4 +9,4 @@
       )}}
     </div>
   {{/sy-modal/overlay}}
-{{/ember-wormhole}}
+</EmberWormhole>

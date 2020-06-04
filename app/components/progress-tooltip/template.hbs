@@ -1,5 +1,5 @@
 {{#if tooltipVisible.lastSuccessful.value}}
-  {{#ember-tether class='progress-tooltip' target=target targetAttachment='middle left' attachment='middle right' offset='0 20px'}}
+  <EmberTether @class="progress-tooltip" @target={{target}} @targetAttachment="middle left" @attachment="middle right" @offset="0 20px">
     <div class="time-info">
       <div class="time-info-durations">
         <p>Spent (Total): {{humanize-duration spent}}</p>
@@ -18,5 +18,5 @@
     {{#if progress}}
       {{progress-bar progress color=color}}
     {{/if}}
-  {{/ember-tether}}
+  </EmberTether>
 {{/if}}

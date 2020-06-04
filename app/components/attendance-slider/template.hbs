@@ -1,15 +1,4 @@
-{{range-slider
-  start     = start
-  step      = 15
-  min       = 0
-  max       = 1440
-  connect   = true
-  animate   = true
-  behaviour = "drag"
-  tooltips  = tooltips
-  on-slide  = (action (mut values))
-  on-change = (action (perform save))
-}}
+<RangeSlider @start={{start}} @step={{15}} @min={{0}} @max={{1440}} @connect={{true}} @animate={{true}} @behaviour="drag" @tooltips={{tooltips}} @on-slide={{action (mut values)}} @on-change={{action (perform save)}} />
 
 <div class="slider-labels">
   {{#each labels as |label|}}

@@ -16,10 +16,7 @@
       <div class="card">
         <div class="card-block">
           {{#with intersection.lastSuccessful.value.model as |model|}}
-            {{#validated-form
-              model     = (changeset model IntersectionValidations)
-              on-submit = (perform save)
-            as |f|}}
+            <ValidatedForm @model={{changeset model IntersectionValidations}} @on-submit={{perform save}} as |f|>
               {{#task-selection
                 on-set-customer = (action (queue (action (mut f.model.customer)) (action 'validate' f.model)))
                 on-set-project  = (action (queue (action (mut f.model.project)) (action 'validate' f.model)))
@@ -30,7 +27,7 @@
                   task          = _task
                 )
               as |t|}}
-                {{#f.input name='task' as |fi|}}
+                <f.input @name="task" as |fi|>
                   <div class="form-group" data-test-customer>
                     <label>
                       Customer
@@ -55,7 +52,7 @@
                     </label>
                     {{t.task}}
                   </div>
-                {{/f.input}}
+                </f.input>
 
                 {{#f.input data-test-comment name='comment' as |fi|}}
                   <label>
@@ -101,7 +98,7 @@
                   {{f.submit}}
                 </div>
               {{/task-selection}}
-            {{/validated-form}}
+            </ValidatedForm>
           {{/with}}
         </div>
       </div>

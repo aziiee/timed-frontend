@@ -1,5 +1,5 @@
-{{#basic-dropdown horizontalPosition='auto-right' as |dd|}}
-  {{#dd.trigger tabindex=-1}}
+<BasicDropdown @horizontalPosition="auto-right" as |dd|>
+  <dd.Trigger tabindex={{-1}}>
     <input
       type="text"
       class="form-control"
@@ -7,20 +7,22 @@
       name={{name}}
       value={{displayValue}}
       placeholder={{placeholder}}
-      onfocus={{action 'handleFocus' dd}}
-      onblur={{action 'handleBlur' dd}}
-      onchange={{action 'handleChange'}}
-      oninput={{action 'checkValidity'}}
+      {{on "focus" (fn this.handleFocus dd)}}
+      {{on "blur" (fn this.handleBlur dd)}}
+      {{on "change" this.handleChange}}
+      {{on "input" this.checkValidity}}
+      autocomplete="off"
     >
-  {{/dd.trigger}}
+  </dd.Trigger>
 
-  {{#dd.content}}
-    {{sy-calendar
-      center         = center
-      selected       = value
-      class          = 'sy-datepicker'
-      onCenterChange = (action (mut center) value='moment')
-      onSelect       = (action (queue (action on-change) (action 'checkValidity')) value='moment')
-    }}
-  {{/dd.content}}
-{{/basic-dropdown}}
+  <dd.Content>
+    render dd content
+    <SyCalendar
+      class="sy-datepicker"
+      @center={{center}}
+      @selected={{value}}
+      @onCenterChange={{action (mut center) value="moment"}}
+      @onSelect={{action (queue (action on-change) (action 'checkValidity')) value='moment'}}
+    />
+  </dd.Content>
+</BasicDropdown>

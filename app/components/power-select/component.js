@@ -26,25 +26,25 @@ const PowerSelectCustomComponent = PowerSelectComponent.extend({
   },
 
   actions: {
-    onTriggerFocus(_, e, ...args) {
-      this._super(_, e, ...args);
+    handleTriggerFocus(event) {
+      this._super(event);
 
-      if (this._focusComesFromOutside(e)) {
-        this.get("publicAPI.actions").open(e);
+      if (this._focusComesFromOutside(event)) {
+        this.publicAPI.actions.open(event);
       }
     },
 
-    onBlur(e, ...args) {
-      this._super(e, ...args);
+    handleBlur(event) {
+      this._super(event);
 
-      if (this._focusComesFromOutside(e)) {
-        this.get("publicAPI.actions").close(e);
+      if (this._focusComesFromOutside(event)) {
+        this.publicAPI.actions.close(event);
       }
     },
 
     scrollTo() {
       const options = document.querySelector(
-        `#ember-power-select-options-${this.get("publicAPI").uniqueId}`
+        `#ember-power-select-options-${this.publicAPI.uniqueId}`
       );
 
       const current = options.querySelector("[aria-current=true]");

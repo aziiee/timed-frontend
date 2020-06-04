@@ -4,6 +4,7 @@
  * @public
  */
 import { getOwner } from "@ember/application";
+// eslint-disable-next-line ember/no-observers
 import { computed, observer } from "@ember/object";
 import { scheduleOnce } from "@ember/runloop";
 import Service, { inject as service } from "@ember/service";
@@ -89,26 +90,23 @@ export default Service.extend({
     if (this.get("activity.active")) {
       this.get("_computeTitle").perform();
     } else {
-      this.setTitle(this.get("title"));
+      this.scheduleTitle(this.get("title"));
     }
   }),
 
   /**
    * Set the doctitle
    *
-   * @method setTitle
+   * @method scheduleTitle
    * @param {String} title The title to set
    * @public
    */
+  scheduleTitle() {
+    // scheduleOnce("afterRender", this, this.setTitle(title));
+  },
+
   setTitle(title) {
-    scheduleOnce(
-      "afterRender",
-      this,
-      t => {
-        document.title = t;
-      },
-      title
-    );
+    document.title = title;
   },
 
   /**
@@ -134,7 +132,7 @@ export default Service.extend({
         task = `${c} > ${p} > ${t}`;
       }
 
-      this.setTitle(`${formatDuration(duration)} (${task})`);
+      this.scheduleTitle(`${formatDuration(duration)} (${task})`);
 
       /* istanbul ignore else */
       if (Ember.testing) {

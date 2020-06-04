@@ -28,7 +28,7 @@ module("Integration | Component | power select", function(hooks) {
       {{power-select
         options            = options
         selected           = selected
-        onchange           = (action (mut selected))
+        onChange           = (action (mut selected))
         tagName            = 'div'
         class              = 'select'
         renderInPlace      = true
@@ -62,7 +62,7 @@ module("Integration | Component | power select", function(hooks) {
       {{power-select
         options            = options
         selected           = selected
-        onchange           = (action (mut selected))
+        onChange           = (action (mut selected))
         tagName            = 'div'
         class              = 'select'
         renderInPlace      = true

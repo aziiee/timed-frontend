@@ -17,7 +17,7 @@
         options=customers
         placeholder="Select customer..."
         searchField="name"
-        onchange=(action (queue (action (mut selectedCustomer)) (action (mut selectedProject) null) (perform filterProjects)))
+        onChange=(action (queue (action (mut selectedCustomer)) (action (mut selectedProject) null) (perform filterProjects)))
         selected=selectedCustomer
         allowClear=true
       as |customer|
@@ -31,7 +31,7 @@
         options=filteredProjects
         placeholder="Select project..."
         searchField="name"
-        onchange=(action (queue (action (mut selectedProject)) (perform fetchTasksOfProject)))
+        onChange=(action (queue (action (mut selectedProject)) (perform fetchTasksOfProject)))
         selected=selectedProject
         allowClear=true
         disabled=(not selectedCustomer)
